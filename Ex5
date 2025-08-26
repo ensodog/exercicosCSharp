@@ -1,0 +1,46 @@
+using System.ComponentModel;
+using System.Numerics;
+using System.Runtime.CompilerServices;
+
+namespace code3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int num1, num2, resultado = 0;
+            Console.WriteLine("Digite o primeiro número: ");
+            num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Digite o segundo número: ");
+            num2 = Convert.ToInt32(Console.ReadLine());
+            soma(num1, num2, resultado);
+            sub(num1, num2, resultado);
+            multi(num1, num2, resultado);
+            div(num1, num2, resultado);
+            Console.WriteLine("A soma é: " + soma(num1, num2, resultado));
+            Console.WriteLine("A subtração é: " + sub(num1, num2, resultado));
+            Console.WriteLine("A multiplicação é: " + multi(num1, num2, resultado));
+            Console.WriteLine("A divisão é: " + div(num1, num2, resultado));
+        }
+        static int soma(int num1, int num2, int resultado)
+        {
+            resultado = num1 + num2;
+            return resultado;
+        }
+        static int sub(int num1, int num2, int resultado)
+        {
+            resultado = num1 - num2;
+            return resultado;
+        }
+        static int multi(int num1, int num2, int resultado)
+        {
+            resultado = num1 * num2;
+            return resultado;
+        }
+        static int div(int num1, int num2, int resultado)
+        {
+            resultado = num1 / num2;
+            return resultado;
+        }
+    }
+}
