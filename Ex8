@@ -1,0 +1,38 @@
+using System.Security.Cryptography.X509Certificates;
+
+namespace construtor2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Retangulo r1 = new Retangulo();
+            r1.calcularea();
+            r1.calculaperimetro();
+        }
+    }
+    internal class Retangulo
+    {
+        double altura, largura;
+
+        public Retangulo()
+        {
+            Console.WriteLine("Digite a largura do retangulo: ");
+            largura = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Digite a altura do retangulo: ");
+            altura = Convert.ToDouble(Console.ReadLine());
+        }
+        public void calcularea()
+        {
+            double area;
+            area = largura * altura;
+            Console.WriteLine("A area do retangulo é: " + area);
+        }
+        public void calculaperimetro()
+        {
+            double perimetro;
+            perimetro = largura + altura + largura + altura;
+            Console.WriteLine("O perimetro do retangulo é: " + perimetro);
+        }
+    }
+}
