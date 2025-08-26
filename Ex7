@@ -1,0 +1,38 @@
+using construtor1;
+using System.Data.Common;
+using System.Globalization;
+
+namespace construtor1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Aluno a1 = new Aluno();
+            Aluno a2 = new Aluno();
+            a1.calculamedia();
+            a2.calculamedia();
+        }
+    }
+    internal class Aluno
+    {
+        string nome;
+        double nota1, nota2;
+
+        public Aluno()
+        {
+            Console.WriteLine("Digite o nome do aluno: ");
+            nome = Console.ReadLine();
+            Console.WriteLine("Digite a primeira nota do aluno: ");
+            nota1 = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Digite a segunda nota do aluno: ");
+            nota2 = Convert.ToDouble(Console.ReadLine());
+        }
+        public void calculamedia()
+        {
+            double media;
+            media = (nota1 + nota2) / 2;
+            Console.WriteLine("A média do aluno é: " + media);
+        }
+    }
+}
