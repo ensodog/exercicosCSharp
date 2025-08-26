@@ -1,0 +1,70 @@
+using System.Xml.Linq;
+
+namespace getset1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Aluno aluno1 = new Aluno();
+            aluno1.set_nome("João");
+            aluno1.set_nota(85);
+            Aluno aluno2 = new Aluno();
+            aluno2.set_nome("Lucão");
+            aluno2.set_nota(65);
+            Aluno aluno3 = new Aluno();
+            aluno3.set_nome("Manu");
+            aluno3.set_nota(37);
+            Aluno aluno4 = new Aluno();
+            aluno4.set_nome("Marcio");
+            aluno4.set_nota(99);
+
+            Exame exame1 = new Exame();
+            exame1.avaliar(aluno1.get_nota(), aluno1.get_nome());
+            exame1.avaliar(aluno2.get_nota(), aluno2.get_nome());
+            exame1.avaliar(aluno3.get_nota(), aluno3.get_nome());
+            exame1.avaliar(aluno4.get_nota(), aluno4.get_nome());
+        }
+        internal class Aluno
+        {
+            int nota;
+            string nome;
+            public void set_nome(string nomeEX)
+            {
+                nome = nomeEX;
+            } 
+            public string get_nome()
+            {
+                return nome;
+            }
+            public void set_nota(int notaEX)
+            {
+                 nota = notaEX;
+            }
+            public int get_nota()
+            {
+                return nota;
+            }
+        }
+
+        internal class Exame
+        {
+            public void avaliar(int nota, string nome)
+            {
+                if (nota >= 70)
+                {
+                    Console.WriteLine(nome + " está aprovado \n");
+                }
+                if (nota >= 50 && nota <= 69)
+                {
+                    Console.WriteLine(nome + " está em recuperação \n");
+                }
+                else if (nota < 50)
+                {
+                    Console.WriteLine(nome + " está reprovado \n");
+                }
+            }
+        }
+    }
+}
+
