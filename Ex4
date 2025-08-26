@@ -1,0 +1,54 @@
+namespace cod3atv2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int num1, num2, num3;
+            num1=conta(-3);
+            num2=conta(6);
+            num3=conta(11);
+            Console.WriteLine("Os resultados são: Por 11 = " + conta(11) + " Por 6 = " + conta(6) + " Por -3 = " + conta(-3));
+            maior(num1, num2, num3);
+            menor(num1, num2, num3);
+            Console.WriteLine("O maior resultado é: " + maior(num1, num2, num3));
+            Console.WriteLine("O menor resultado é: " + menor(num1, num2, num3));
+        }
+        static int conta(int num)
+        {
+            int resultado;
+            resultado = ((num * num) * 3 - 5) / 2 - 10;
+            return resultado; 
+        }
+        static int maior(int num1, int num2, int num3)
+        {
+            if (num1 >= num2 && num1 >= num3)
+            {
+                return num1;
+            }
+            else if (num2 >= num3 && num2 >= num1)
+            {
+                return num2;
+            }
+            else
+            {
+                return num3;
+            }
+        }
+        static int menor(int num1, int num2, int num3)
+        {
+            if (num1 <= num2 && num1 <= num3)
+            {
+                return num1;
+            }
+            else if (num2 <= num3 && num2 <= num1)
+            {
+                return num2;
+            }
+            else
+            {
+                return num3;
+            }
+        }
+    }
+}
