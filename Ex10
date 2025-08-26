@@ -1,0 +1,71 @@
+using System.Security.Cryptography.X509Certificates;
+
+namespace getset2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int condicional = 1;
+            do
+            {
+                Carro carro1 = new Carro();
+                Console.WriteLine("Digite o modelo do carro: ");
+                carro1.set_modelo(Console.ReadLine());
+                Console.WriteLine("Digite o ano do carro: ");
+                carro1.set_ano(Convert.ToInt32(Console.ReadLine()));
+                Console.WriteLine("Digite a velocidade do carro: ");
+                carro1.set_velocidade(Convert.ToInt32(Console.ReadLine()));
+                Console.WriteLine("Digite o número de série do carro: ");
+                carro1.set_numserie(Convert.ToInt32(Console.ReadLine()));
+
+                Console.WriteLine("O modelo do carro é: " + carro1.get_modelo());
+                Console.WriteLine("O ano do carro é: " + carro1.get_ano());
+                Console.WriteLine("A velocidade do carro é: " + carro1.get_velocidade());
+                Console.WriteLine("\nDeseja continuar? Digite 1 para continuar e qualquer outro número para parar: ");
+                condicional=Convert.ToInt32(Console.ReadLine());
+            }while(condicional==1);
+        }
+        internal class Carro
+        {
+            string modelo;
+            int ano;
+            int velocidade;
+            int numserie;
+            public void set_modelo(string modeloEX)
+            {
+                modelo = modeloEX;
+            }
+            public string get_modelo()
+            {
+                return modelo;
+            }
+            public void set_ano(int anoEX)
+            {
+                ano = anoEX;
+            }
+            public int get_ano()
+            {
+                return ano;
+            }
+            public void set_velocidade(int velocidadeEX)
+            {
+                if (velocidadeEX >= 0)
+                {
+                    velocidade = velocidadeEX;
+                } else
+                {
+                    Console.WriteLine("Velocidade invália");
+                }
+            }
+            public int get_velocidade()
+            {
+                return velocidade;
+            }
+            public void set_numserie(int numEX)
+            {
+                numserie = numEX;
+            }
+        }
+    }
+}
