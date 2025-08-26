@@ -1,0 +1,57 @@
+
+
+namespace atv3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Atleta atleta1 = new Atleta();
+            atleta1.nome = "Enzo";
+            atleta1.tempo = 5;
+            atleta1.distancia = 100;
+            Atleta atleta2 = new Atleta();
+            atleta2.nome = "João";
+            atleta2.tempo = 10;
+            atleta2.distancia = 80;
+            Atleta atleta3 = new Atleta();
+            atleta3.nome = "Paulo";
+            atleta3.tempo = 10;
+            atleta3.distancia = 60;
+            Atleta atleta4 = new Atleta();
+            atleta4.nome = "Cauã";
+            atleta4.tempo = 5;
+            atleta4.distancia = 10;
+            atleta1.avaliar(atleta1.nome, atleta1.tempo, atleta1.distancia);
+            atleta2.avaliar(atleta2.nome, atleta2.tempo, atleta2.distancia);
+            atleta3.avaliar(atleta3.nome, atleta3.tempo, atleta3.distancia);
+            atleta4.avaliar(atleta4.nome, atleta4.tempo, atleta4.distancia);
+        }
+        public class Atleta
+        {
+            public string nome;
+            public int tempo;
+            public int distancia; 
+            public void avaliar(string nome,  int tempo, int distancia)
+            {
+                int avaliar = distancia / tempo;
+                if (avaliar > 8)
+                {
+                    Console.WriteLine(nome + " teve um desempenho excelente");
+                }
+                if (avaliar<=8 && avaliar>6)
+                {
+                    Console.WriteLine(nome + " teve um desempenho bom");
+                }
+                if (avaliar <= 6 && avaliar >= 4)
+                {
+                    Console.WriteLine(nome + " teve um desempenho regular");
+                }
+                else if(avaliar<4)
+                {
+                    Console.WriteLine(nome + " teve um desempenho ruim");
+                }
+            }
+        }
+    }
+}
