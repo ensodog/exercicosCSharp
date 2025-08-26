@@ -1,0 +1,73 @@
+namespace jogo
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Personagem Garrock = new Personagem();
+            Garrock.nome = "Garrock";
+            Garrock.profissao = "Bárbaro";
+            Garrock.forca = 9;
+            Garrock.inteligencia = 3;
+            Garrock.acerto = 7;
+            Garrock.esquiva = 5;
+            Garrock.vida = 14;
+            Personagem Lyra = new Personagem();
+            Lyra.nome = "Lyra";
+            Lyra.profissao = "Feiticeira";
+            Lyra.forca = 3;
+            Lyra.inteligencia = 9;
+            Lyra.acerto = 6;
+            Lyra.esquiva = 7;
+            Lyra.vida = 8;
+            if (Garrock.ataque(Lyra.esquiva, Garrock.nome) == true)
+            {
+                Garrock.ataque(Lyra.esquiva, Garrock.nome);
+                Lyra.perdervida(Garrock.forca);
+                if (Lyra.vida <= 0)
+                {
+                    Console.WriteLine("O vencedor foi " + Garrock.nome);
+                }
+            }
+            else
+            {
+                Console.WriteLine("O ataque de " + Garrock.nome + " falhou!");
+            }
+          
+            Lyra.ataque(Garrock.esquiva, Lyra.nome);
+
+            
+        }
+        public class Personagem
+        {
+            public string nome;
+            public string profissao;
+            public int forca;
+            public int inteligencia;
+            public int acerto;
+            public int esquiva;
+            public int vida;
+            public bool ataque(int esquivaOponente, string nome)
+            {
+               if(acerto >= esquivaOponente)
+                {
+                    Console.WriteLine("O ataque de " + nome + " foi realizado\n");
+                    Console.WriteLine("Próximo turno!\n");
+                    return true;
+                } else
+                {
+                    Console.WriteLine("O ataque de " + nome + " falhou\n");
+                    Console.WriteLine("Próximo turno!\n");
+                    return false;
+                }
+
+            }
+            public void perdervida(int forcaadv)
+            {
+                vida = vida - forcaadv;
+                Console.WriteLine("A vida do adversário agora é: " + vida);
+            }
+
+        }
+    }
+}
