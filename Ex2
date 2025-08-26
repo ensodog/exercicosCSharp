@@ -1,0 +1,24 @@
+namespace cod1atv2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            texto("Enzo");
+            texto("Pedro");
+            texto("João");
+            texto("Marco");
+            texto("Flávio");
+
+        }
+        static void texto(string nome)
+        {
+            Console.Write(nome + " era um rapaz determinado que cresceu em uma cidade pequena, onde as oportunidades pareciam distantes. Apesar das dificuldades financeiras em sua família, ");
+            Console.Write(nome+ " nunca desanimou. Ele se esforçava nos estudos, consciente de que era sua melhor chance de mudar de vida. Então veio a notícia: ");
+            Console.Write(nome + " conquistou uma bolsa para estudar no exterior. Longe de casa, ");
+            Console.Write(nome + " enfrentou desafios que nunca imaginara. Mas cada obstáculo só o fortalecia mais. ");
+            Console.Write(nome + " mergulhou nos estudos, fez amigos de diferentes partes do mundo e se formou com orgulho. De volta à sua cidade natal, ");
+            Console.Write(nome + " tornou-se uma inspiração para os jovens locais, mostrando-lhes que com determinação, eles também poderiam alcançar seus sonhos, assim como ele, " + nome + "\n");
+        }
+    }   
+}
