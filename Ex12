@@ -1,0 +1,193 @@
+namespace sisbank
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Sistema sis = new Sistema();
+            sis.menu();
+        }
+    }
+
+    internal class ContaCorrente
+    {
+        int numconta;
+        double saldo;
+        string nome;
+
+        public void set_saldo(double saldoEX)
+        {
+            saldo = saldoEX;
+        }
+        public void set_numconta(int numEX)
+        {
+            numconta = numEX;
+        }
+        public void set_nome(string nomeEX)
+        {
+            nome = nomeEX;
+        }
+        public string get_nome()
+        {
+            return nome;
+        }
+        public double get_saldo()
+        {
+            return saldo;
+        }
+        public int get_numconta()
+        {
+            return numconta;
+        }
+    }
+    internal class Usuario
+    {
+        string nomeusu;
+        int cpf, idade;
+
+        public void set_nomeusu(string nomeEX)
+        {
+            nomeusu = nomeEX;
+        }
+        public void set_cpf(int cpfEX)
+        {
+            cpf = cpfEX;
+            while (cpf <= 0)
+            {
+                Console.WriteLine("CPF inválido, tente novamente: ");
+                cpf = Convert.ToInt32(Console.ReadLine());
+            }
+        }
+        public void set_idade(int idadeEX)
+        {
+            idade = idadeEX;
+            while (idade <= 17)
+            {
+                Console.WriteLine("Idade inválida, tente novamente: ");
+                idade = Convert.ToInt32(Console.ReadLine());
+            }
+        }
+        public int get_idade()
+        {
+            return idade;
+        }
+        public int get_cpf()
+        {
+            return cpf;
+        }
+    }
+    internal class Sistema
+    {
+        int opc, auxint;
+        string auxstr;
+        double auxdbl;
+        ContaCorrente conta = new ContaCorrente();
+        Usuario usuario = new Usuario();
+
+        void criarconta()
+        {
+            Console.WriteLine("\n>>>>>Iniciando criação da conta<<<<<\n");
+            Console.WriteLine("Digite seu nome: ");
+            auxstr = Console.ReadLine();
+            conta.set_nome(auxstr);
+            usuario.set_nomeusu(auxstr);
+            Console.WriteLine("Digite seu CPF: ");
+            auxint = Convert.ToInt32(Console.ReadLine());
+            usuario.set_cpf(auxint);
+            Console.WriteLine("Digite sua idade: ");
+            auxint = Convert.ToInt32(Console.ReadLine());
+            usuario.set_idade(auxint);
+            Console.WriteLine("Digite o numero da sua conta: ");
+            auxint = Convert.ToInt32(Console.ReadLine());
+            conta.set_numconta(auxint);
+            Console.WriteLine("Digite o saldo da sua conta: ");
+            auxdbl = Convert.ToDouble(Console.ReadLine());
+            conta.set_saldo(auxdbl);
+            Console.WriteLine("\n>>>>>Conta criada com sucesso!<<<<<");
+        }
+        void sacar()
+        {
+            Console.WriteLine("\nQual a quantidade que você deseja sacar?");
+            auxdbl = Convert.ToInt32(Console.ReadLine());
+            while (conta.get_saldo() + 500 < auxdbl)
+            {
+                Console.WriteLine("O valor do saque excede o limite, tente novamente: ");
+                auxdbl = Convert.ToDouble(Console.ReadLine());
+            }
+            Console.WriteLine(">>>>>Saque realizado com sucesso!<<<<<");
+            conta.set_saldo(conta.get_saldo() - auxdbl);
+        }
+        void depositar()
+        {
+            Console.WriteLine("\nDigite o valor do deposito: ");
+            auxdbl = Convert.ToDouble(Console.ReadLine());
+            while (auxdbl <= 0)
+            {
+                Console.WriteLine("Não foi possivel realizar o deposito, tente novamente: ");
+                auxdbl = Convert.ToDouble(Console.ReadLine());
+            }
+            Console.WriteLine("Deposito realizado com sucesso!");
+            conta.set_saldo(conta.get_saldo() + auxdbl);
+        }
+        void transferir()
+        {
+            ContaCorrente temp = new ContaCorrente();
+            Console.WriteLine("\nDigite a quatidade que deseja transferir: ");
+            auxdbl = Convert.ToInt32(Console.ReadLine());
+            while (conta.get_saldo() + 500 < auxdbl)
+            {
+                Console.WriteLine("O valor do deposito excede o limite, tente novamente: ");
+                auxdbl = Convert.ToDouble(Console.ReadLine());
+            }
+            Console.WriteLine(">>>>>Deposito realizado com sucesso!<<<<<");
+            conta.set_saldo(conta.get_saldo() - auxdbl);
+            temp.set_saldo(auxdbl);
+        }
+        void mostrasaldo()
+        {
+            Console.WriteLine("\nO saldo atual da conta é: " + conta.get_saldo());
+        }
+        void mostrainfo()
+        {
+            Console.WriteLine("\n>>>>>INFORMAÇÕES DA SUA CONTA<<<<<");
+            Console.WriteLine("Nome: " + conta.get_nome());
+            Console.WriteLine("Idade: " + usuario.get_idade());
+            Console.WriteLine("CPF: " + usuario.get_cpf());
+            Console.WriteLine("Numero da conta: " + conta.get_numconta());
+            Console.WriteLine("Saldo: " + conta.get_saldo());
+        }
+        public void menu()
+        {
+            criarconta();
+            do
+            {
+                Console.WriteLine("\n1. Realizar depósito.\n2. Realizar saque.\n3. Transferir para outra conta.\n4. Exibir saldo.\n5. Criar uma nova conta.\n6. Exibir informações.\n7. Encerrar o sistema.");
+                opc = Convert.ToInt32(Console.ReadLine());
+                if (opc == 1)
+                {
+                    depositar();
+                }
+                if (opc == 2)
+                {
+                    sacar();
+                }
+                if (opc == 3)
+                {
+                    transferir();
+                }
+                if (opc == 4)
+                {
+                    mostrasaldo();
+                }
+                if (opc == 5)
+                {
+                    criarconta();
+                }
+                if (opc == 6)
+                {
+                    mostrainfo();
+                }
+            } while (opc != 7);
+        }
+    }
+}
