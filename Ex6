@@ -1,0 +1,26 @@
+namespace code4
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int num, resultado=0;
+            Console.WriteLine("Digite um número: ");
+            num=Convert.ToInt32(Console.ReadLine());
+            sucessor(num, resultado);
+            antecessor(num, resultado);
+            Console.WriteLine("O antecessor desse número é: " + antecessor(num, resultado));
+            Console.WriteLine("O sucessor desse número é: " + sucessor(num, resultado));
+        }
+        static int sucessor(int num, int resultado)
+        {
+            resultado = num + 1;
+            return resultado; 
+        }
+        static int antecessor(int num, int resultado)
+        {
+            resultado = num - 1;
+            return resultado;
+        }
+    }
+}
